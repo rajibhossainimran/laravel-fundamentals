@@ -17,21 +17,29 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($categories as $category)
+                        
+                    
                     <tr class="border-b hover:bg-gray-100">
-                        <td class="px-6 py-4">1</td>
-                        <td class="px-6 py-4">Rajib</td>
-                        <td class="px-6 py-4">Lorem ipsum dolor sit amet.</td>
+                        <td class="px-6 py-4">{{$category->id}}</td>
+                        <td class="px-6 py-4">{{$category->name}}</td>
+                        <td class="px-6 py-4">{{$category->description}}</td>
                         <td class="px-6 py-4">
                             <span class="px-3 py-1 text-sm font-semibold text-green-700 bg-green-200 rounded-full">
-                                Active
+                                {{$category->status == 1? 'Active':'Inactive'}}
                             </span>
                         </td>
-                        <td class="px-6 py-4 text-center">
-                            <button class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-600">
-                                Delete
-                            </button>
+                        <td class="px-6 py-4 text-center flex flex-col">
+                            <a href="{{route('category.edit',$category->id)}}" class="bg-lime-600 rounded-md px-2 py-1 my-1">Edit</a>
+                            <a href="{{route('category.show',$category->id)}}" class="bg-sky-600 rounded-md px-2 py-1 my-1">show</a>
+                            <form action="{{route('category.destroy',$category->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="bg-red-600 rounded-md px-2 py-1 my-1">Delete</button>
+                            </form>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

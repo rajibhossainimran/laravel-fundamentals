@@ -5,6 +5,7 @@
     
     <div class="p-6 w-[700px] mx-auto">
         <div class="max-w-lg mx-auto bg-white p-6 shadow-lg rounded-lg mt-10">
+            <p class="w-[150px] text-center"><a href="{{url('category')}}" class="bg-red-700 px-4 py-2 rounded-3xl my-10 block hover:bg-red-500 ">Back</a></p>
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">Create Category</h2>
             
             <form action="{{route('category.store')}}" method="POST" class="space-y-4">

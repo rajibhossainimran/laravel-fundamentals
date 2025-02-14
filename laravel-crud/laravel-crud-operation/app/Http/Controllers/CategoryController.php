@@ -12,7 +12,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index');
+        $categories = Category::get();
+        // return $categories;
+        return view('category.index',['categories'=>$categories]);
     }
 
     /**
@@ -42,7 +44,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('category.show');
+        return view('category.show',compact('category'));
     }
 
     /**
@@ -50,7 +52,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('category.edit');
+        return view('category.edit',compact('category'));
+        
     }
 
     /**
@@ -58,7 +61,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name'=>'required|string|max:255',
+            'description'=>'required|string|max:255',
+            'status'=>'nullable',
+        ]);
+        $category->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'status'=>$request->status ==true?1:0,
+        ]);
+        return redirect('/category')->with('status','category create successfully');
     }
 
     /**
@@ -66,6 +79,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect('/category')->with('status','category delete successfully');
     }
 }

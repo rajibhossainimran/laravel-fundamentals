@@ -11,8 +11,9 @@
     <!-- header  -->
     <header class="bg-gray-800 text-white p-4 text-center">
         <ul class="flex justify-center gap-6 items-center text-sm text-white font-bold">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Category</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="./category">Category</a></li>
+            <li><a href="./product">product</a></li>
         </ul>
     </header>
 
