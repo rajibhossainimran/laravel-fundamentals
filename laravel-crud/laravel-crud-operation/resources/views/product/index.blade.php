@@ -27,7 +27,7 @@
                         <form action="{{route('product.destroy',$product->id)}}" method="post">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="bg-red-400 px-2 py-1 my-1 rounded-md">Delete</button>
+                        <button type="submit" class="bg-red-400 px-2 py-1 my-1 rounded-md">Del</button>
                         </form>   
                     </td>    
                     </tr>  
