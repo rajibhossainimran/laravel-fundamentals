@@ -23,8 +23,12 @@
                      <td class="px-6 py-3 text-left">{{$product->description}}</td>   
                      <td class="px-6 py-3 text-left">{{$product->status==1?'Active':'Inactive'}}</td> 
                      <td>
-                        <a href="{{product.edit}}" class="bg-lime-600 rounded-md px-2 py-1 my-1">edit</a>   
-                        <a href="" class="bg-sky-600 rounded-md px-2 py-1 my-1">show</a>   
+                        <a href="{{route('product.edit',$product->id)}}" class="bg-lime-600 rounded-md px-2 py-1 my-1">edit</a>   
+                        <form action="{{route('product.destroy',$product->id)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="bg-red-400 px-2 py-1 my-1 rounded-md">Delete</button>
+                        </form>   
                     </td>    
                     </tr>  
                     @endforeach

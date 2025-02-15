@@ -52,7 +52,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product.edit',compact('product'));
     }
 
     /**
@@ -60,7 +60,12 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $product->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'status'=>$request->status
+        ]);
+        return redirect('./product');
     }
 
     /**
@@ -68,6 +73,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect('/product');
     }
 }
