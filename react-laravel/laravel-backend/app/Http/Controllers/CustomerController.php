@@ -73,7 +73,7 @@ class CustomerController extends Controller
         try {
             $customers = Customer::find($id);
             if(!$customers){
-                return $customers()->json([
+                return response()->json([
                     'message' => 'User not found!'
                 ],404);
             }
@@ -95,6 +95,21 @@ class CustomerController extends Controller
         }
     }
 
+    public function delete($id){
+
+        $customers = Customer::find($id);
+        if(! $customers ){
+            return  response()->json([
+                'message' => 'User not found!'
+            ],404);
+        }
+
+        $customers->delete();
+
+        return response()->json([
+            'message' => 'user succesfully deleted'
+        ],200);
+    }
     /**
      * Remove the specified resource from storage.
      */

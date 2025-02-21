@@ -13,7 +13,7 @@ class UserStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;  // Allow all users to make the request
     }
 
     /**
@@ -21,19 +21,18 @@ class UserStoreRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-
     public function rules(): array
     {
         if (request()->isMethod('post')) {
             return [
                 'name' => 'required|string|max:258',
-                'email' => 'required|string',
+                'email' => 'required|string|email',
                 'contact' => 'required|string'
             ];
-        }else{
+        } else {
             return [
                 'name' => 'required|string|max:258',
-                'email' => 'required|string',
+                'email' => 'required|string|email',
                 'contact' => 'required|string'
             ];
         }
