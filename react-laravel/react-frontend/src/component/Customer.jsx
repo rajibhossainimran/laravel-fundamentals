@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit } from "react-icons/fa";
+import { MdOutlineDeleteForever } from "react-icons/md";
+import axios from "axios";
+
 
 
 const Customer = () => {
@@ -25,6 +28,18 @@ const Customer = () => {
         // call the function 
         loadCustomer();
     },[]);
+    
+    // delete function 
+    const handleDelete=async(id)=>{
+      console.log(id);
+      await axios.delete("http://127.0.0.1:8000/api/customerdelete/"+id);
+      const newUserData=customer.filter((item)=>{
+          return(
+              item.id !==id
+          )
+      })
+      setCustomer(newUserData);
+  }
 
     return (
         <div>
@@ -52,6 +67,7 @@ const Customer = () => {
               <td className="border border-gray-300 ">
                 <div className='flex'>
                     <Link to={`edit-customer/${user.id}`} className='text-xl text-purple-700 p-2 block'><FaEdit /></Link>
+                    <button onClick={()=>handleDelete(user.id)} className='text-2xl text-red-700 p-2 block'><MdOutlineDeleteForever /></button>
                 </div>
             </td>
             </tr>
