@@ -28,9 +28,9 @@ const Navbar = () => {
             <a href="#" className="text-gray-300 hover:text-white transition-colors duration-300 font-medium">
               Services
             </a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors duration-300 font-medium">
-              Contact
-            </a>
+            <Link to="login" className="text-gray-300 hover:text-white transition-colors duration-300 font-medium">
+              Login
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
