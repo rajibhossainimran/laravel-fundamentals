@@ -31,7 +31,9 @@
                         </td>
                         <td class="px-6 py-4 text-center flex flex-col">
                             <a href="{{route('category.edit',$category->id)}}" class="bg-lime-600 rounded-md px-2 py-1 my-1">Edit</a>
+                            
                             <a href="{{route('category.show',$category->id)}}" class="bg-sky-600 rounded-md px-2 py-1 my-1">show</a>
+                            
                             <form action="{{route('category.destroy',$category->id)}}" method="post">
                                 @csrf
                                 @method('delete')

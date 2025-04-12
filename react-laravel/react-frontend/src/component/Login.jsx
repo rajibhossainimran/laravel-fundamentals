@@ -115,7 +115,7 @@ const Login = () => {
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">
-                  Don't have an acount ?<span><Link to="/signup" className='text-sky-500 font-bold'>Signup</Link></span>
+                  Don't have an acount ? <span><Link to="/signup" className='text-sky-500 font-bold'>Signup</Link></span>
                 </span>
               </div>
             </div>

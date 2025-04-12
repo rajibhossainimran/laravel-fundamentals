@@ -14,6 +14,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="./category">Category</a></li>
             <li><a href="./product">product</a></li>
+            <li><a href="./student">student</a></li>
         </ul>
     </header>
 
