@@ -88,7 +88,7 @@
   
       <!-- Footer -->
       <footer class="bg-gray-800 text-gray-300 py-6 text-center">
-        <p>&copy; 2025 Turret Global. All rights reserved.</p>
+        <p>&copy; 2025@Rajib Hossain. All rights reserved.</p>
       </footer>
             </main>
         </div>
