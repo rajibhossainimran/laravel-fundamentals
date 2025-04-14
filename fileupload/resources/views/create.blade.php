@@ -58,13 +58,17 @@
     </div>
 
     <div class="w-4/5 mx-auto bg-gray-100 mt-10">
-       <div class="flex">
-        @foreach ($data as $image)
-        <div class="w-80 mx-2">
-            <img class="object-fill w-48" src="{{'storage/'.$image->file_name}}" alt="">
+        <div class="flex">
+            @if($data->isNotEmpty())
+                @foreach ($data as $image)
+                    <div class="w-80 mx-2">
+                        <img class="object-fill w-48" src="{{ asset('storage/' . $image->file_name) }}" alt="">
+                    </div>
+                @endforeach
+            @else
+                <p>No image available</p>
+            @endif
         </div>
-        @endforeach
-       </div>
         
     </div>
 
