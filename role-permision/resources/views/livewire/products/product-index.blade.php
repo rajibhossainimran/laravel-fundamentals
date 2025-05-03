@@ -15,6 +15,9 @@
     {{-- user table  --}}
     <div class="container mx-auto p-4">
         <div class="overflow-x-auto">
+          @can('product.create')
+              
+          @endcan
             <a href="{{route('product.create')}}" class="inline-block my-5 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300">
                 Create Product
               </a>
@@ -34,8 +37,17 @@
                 <td class="py-2 px-4 border-b">{{$product->name}}</td>
                 <td class="py-2 px-4 border-b">{{$product->detail}}</td>
                 <td class="py-2 px-4 border-b">
+
+                  @can('product.edit')
                   <a href="{{route('product.edit',$product->id)}}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2">Edit</a>
-                  <button wire:click="delete('{{$product->id}}')" wire:confirm="Are you sure you want to delete ?" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+                  @endcan
+                 
+
+                  @can('product.delete')
+                  <button wire:click="delete('{{$product->id}}')" wire:confirm="Are you sure you want to delete ?" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>  
+                  @endcan
+                  
+
                 </td>
               </tr>
               @endforeach

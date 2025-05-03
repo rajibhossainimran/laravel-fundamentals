@@ -20,6 +20,11 @@
             <flux:input class="py-2" wire:model="name" type="text" label="Name" />
             <flux:input class="py-2" wire:model="email" type="email" label="Email" />
             <flux:input class="py-2" wire:model="password" type="password" label="Password" />
+            <flux:checkbox.group wire:model="roles" label="Roles">
+                @foreach ($allRoles as $role)
+                  <flux:checkbox label="{{$role->name}}" value="{{$role->name}}" checked />
+                @endforeach   
+            </flux:checkbox.group>
             <flux:button type="submit" class="mx-auto block" variant="primary">Submit</flux:button>
         </form>
       </section>

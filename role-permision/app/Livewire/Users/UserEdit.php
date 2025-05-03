@@ -4,16 +4,21 @@ namespace App\Livewire\Users;
 
 use App\Models\User;
 use Livewire\Component;
+use Spatie\Permission\Models\Role;
 
 class UserEdit extends Component
 {
 
-    public $user, $name, $email , $password;
+    public $user, $name, $email , $password ,$allRoles;
+    public $roles =[];
+
 
     public function mount($id){
         $this->user=User::find($id);
         $this->name = $this->user->name;
         $this->email= $this->user->email;
+        $this->allRoles = Role::all();
+        $this->roles = $this->user->roles()->pluck('name');
        
     }
 
@@ -33,7 +38,7 @@ class UserEdit extends Component
         $this->user->password = $this->password;
 
         $this->user->save();
-
+        $this->user->assignRole($this->roles);
 
         return to_route('user.index')->with('success','user updated');
     }
